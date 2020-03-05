@@ -5,7 +5,7 @@ const Navigation = props =>{
   return(
       <nav>
         <ul>
-          <li><NavLink to="/">Text</NavLink></li>
+          <li><button><NavLink to="/">Text</NavLink></button></li>
           <li><NavLink to="/login">Login</NavLink></li>
           <li><NavLink to ="/signup">Signup</NavLink></li>
         </ul>

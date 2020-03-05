@@ -8,15 +8,19 @@ function App() {
   return (
       <Router>
         <Switch>
+
           <Route exact path="/">
             <HomePage/>
           </Route>
-          <Route path="/signup:value">
+
+          <Route path={['/signup', '/sign_up']}>
             <SignUpPage/>
           </Route>
-          <Route path={['/signin', '/login']}
-                 render={routeProps => (<SignInPage {...routeProps}/>)}>
+
+          <Route path={['/signin', '/sign_in', '/login']}>
+            <SignInPage/>
           </Route>
+
         </Switch>
       </Router>
   );

@@ -1,22 +1,17 @@
-import React, {Component} from 'react';
+import React  from 'react';
 import {withRouter} from 'react-router';
-import {Link} from 'react-router-dom';
 import Navigation from '../components/Navigator';
+import styles from '../styles/HomePage.module.scss';
 
-const HomePage = props => {
-
+const HomePage = (props) => {
   return (
       <div>
-        <h1>
-          Home Page
-        </h1>
+        <h1>Home Page</h1>
         <Navigation/>
-
       </div>
   );
-
 };
 
 HomePage.propTypes = {};
 
-export default withRouter( HomePage);
+export default withRouter(HomePage);
