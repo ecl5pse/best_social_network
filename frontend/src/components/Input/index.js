@@ -8,9 +8,9 @@ const Input = (props) => {
       <label>
         <div className={classNames(styles.container)}>
           <input {...field} {...rest} className={classNames(styles.default, {})}
-                 type="text"/>
+                 type="text" placeholder='Email'/>
           <input {...field} {...rest} className={classNames(styles.default, {})}
-                 type="password"/>
+                 type="password" placeholder='Password'/>
         </div>
       </label>
   );
