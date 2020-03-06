@@ -40,10 +40,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     }
   }, {} );
+
   User.associate = function (models) {
-    User.hasMany( models.Task, {
+    User.hasMany(models.Task, {
       foreignKey: 'userId'
-    } );
-  };
-  return User;
+    });
+
+    User.associate = function(models) {
+      User.hasMany(models.RefreshToken, {
+        foreignKey: 'userId'
+      });
+    };
+
+    return User;
+  }
 };

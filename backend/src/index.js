@@ -15,4 +15,4 @@ app.post( '/api/refresh', (req, res, next) => {
 
 app.use( '/api', router );
 
-app.listen( PORT, () => console.log( `Example app listening on port ${PORT}!` ) );
+app.listen( PORT, () => console.log( `Example app listening on port ${PORT} ༼ つ ◕_◕ ༽つ`) );
