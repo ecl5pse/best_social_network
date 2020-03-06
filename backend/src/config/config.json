@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "arthur",
+    "username": "vlad",
     "password": "admin",
-    "database": "fe_db",
+    "database": "app_server_dv",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "migrationStorage": "json",
