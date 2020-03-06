@@ -1,13 +1,15 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import styles from '../../styles/Navigator.module.scss'
+import classNames from 'classnames'
 
 const Navigation = props =>{
   return(
       <nav>
-        <ul>
-          <li><button><NavLink to="/">Text</NavLink></button></li>
-          <li><NavLink to="/login">Login</NavLink></li>
-          <li><NavLink to ="/signup">Signup</NavLink></li>
+        <ul className={classNames(styles.container)}>
+          <button className={classNames(styles.home)}><NavLink to="/" >Home</NavLink></button>
+          <li><NavLink to="/login">Sign In </NavLink></li>
+          <button className={classNames(styles.signUp)}><NavLink to ="/signup">Sign Up</NavLink></button>
         </ul>
       </nav>
   )

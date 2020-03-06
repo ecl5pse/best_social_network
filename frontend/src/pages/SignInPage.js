@@ -1,17 +1,19 @@
-import React  from 'react';
+import React        from 'react';
 import {withRouter} from 'react-router';
-import Navigation from '../components/Navigator';
+import Navigation   from '../components/Navigator';
+import SignInForm   from '../components/SignInForm';
+import styles       from '../styles/Page.module.scss';
+import classNames from 'classnames';
 
-const SignInPage = (props)=> {
+const SignInPage = (props) => {
 
-    return (
-        <div>
-        <h1>Sign In Page</h1>
-          <Navigation/>
-        </div>
-    )
+  return (
+      <div className={classNames(styles.container)}>
+        <h1 className={classNames(styles.text)}>LOGIN TO YOUR ACCOUNT</h1>
+        <Navigation/>
+        <SignInForm/>
+      </div>
+  );
 };
-
-
 
 export default withRouter(SignInPage);
