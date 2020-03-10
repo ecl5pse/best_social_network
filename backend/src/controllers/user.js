@@ -1,5 +1,6 @@
-const { User } = require( './../models' );
-const Controller = require( './../utils/controller' );
+import {User} from './../models';
+
+import Controller from './../utils/controller';
 
 class UserController {
 

@@ -1,4 +1,4 @@
-const { AuthorizationError } = require( '../../utils/errors' );
+import {AuthorizationError} from '../../utils/errors';
 
 module.exports = (req, res, next) => {
   try {

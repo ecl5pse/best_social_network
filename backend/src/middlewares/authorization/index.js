@@ -1,4 +1,4 @@
-const checkAuthorization = require( './checkAuthorization.js' );
+import checkAuthorization from './checkAuthorization.js';
 
 module.exports = {
 

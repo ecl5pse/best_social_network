@@ -1,11 +1,12 @@
 import React, {Suspense, lazy} from 'react';
+import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 const SignInPage = lazy(() => import ('./pages/SignInPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 
-const fallbackElem = <div>Loading...</div>;
+const fallbackElem = <div className='loader'>>Loading...</div>;
 
 function App() {
   return (

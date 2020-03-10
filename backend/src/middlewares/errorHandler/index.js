@@ -1,6 +1,8 @@
-const { ApplicationError } = require( '../../utils/errors' );
-const { ValidationError } = require( 'sequelize' );
-const { ValidationError: JoiError } = require( '@hapi/joi' );
+import {ApplicationError} from '../../utils/errors';
+
+import {ValidationError} from 'sequelize';
+
+import {ValidationError as JoiError} from '@hapi/joi';
 
 function handleValidationError (err, req, res, next) {
   if (err instanceof JoiError) {

@@ -1,5 +1,6 @@
-const { Task } = require( './../models' );
-const Controller = require( './../utils/controller' );
+import {Task} from './../models';
+
+import Controller from './../utils/controller';
 
 class TaskController {
 

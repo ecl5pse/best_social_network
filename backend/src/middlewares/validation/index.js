@@ -1,4 +1,4 @@
-const createValidationMW = require( './createValidationMW.js' );
+import createValidationMW from './createValidationMW.js';
 
 module.exports = {
   createValidationMW,

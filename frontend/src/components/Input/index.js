@@ -12,7 +12,7 @@ const Input = ({ field, form, meta, ...props }) => {
   return (
       <label className={styles.container}>
         <div>{props.label}</div>
-        <input {...field} className={inputClassName} {...props}/>
+        <input {...field} className={inputClassName} {...props} />
         {meta.error && <div className={styles.errorTip}>{meta.error}</div>}
       </label>
   );

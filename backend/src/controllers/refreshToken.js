@@ -1,5 +1,6 @@
-const {RefreshToken} = require('./../models');
-const Controller = require('./../utils/controller');
+import {RefreshToken} from './../models';
+
+import Controller from './../utils/controller';
 
 class RefreshTokenController {
 

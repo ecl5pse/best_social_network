@@ -1,10 +1,11 @@
-const express = require( 'express' );
-const errorHandlers = require( './../middlewares/errorHandler' );
-const adminRouter = require( './admin.js' );
-const userRouter = require( './user.js' );
-const taskRouter = require( './task.js' );
-const authenticationRoute= require( './authorization.js' );
-const { checkAuthorization } = require( './../middlewares/authorization' );
+import express from 'express';
+import errorHandlers from './../middlewares/errorHandler';
+import adminRouter from './admin.js';
+import userRouter from './user.js';
+import taskRouter from './task.js';
+import authenticationRoute from './authorization.js';
+import {checkAuthorization} from './../middlewares/authorization';
+
 const router = express.Router();
 
 router.use( authenticationRoute );
@@ -14,8 +15,7 @@ router.use( userRouter );
 router.use( taskRouter );
 
 router.use( errorHandlers.handleValidationError,
-            errorHandlers.handleApplicationError,
-            errorHandlers.handleSequelizeError,
+	errorHandlers.handleApplicationError,
+	errorHandlers.handleSequelizeError,
 );
-
-module.exports = router;
+export  default router;

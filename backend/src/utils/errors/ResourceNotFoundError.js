@@ -1,4 +1,4 @@
-const ApplicationError = require( './ApplicationError.js' );
+import ApplicationError from './ApplicationError.js';
 
 class ResourceNotFoundError extends ApplicationError {
   constructor (resource = 'resource') {

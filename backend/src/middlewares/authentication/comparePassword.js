@@ -1,6 +1,8 @@
-const { User } = require( '../../models' );
-const { ForbiddenError } = require( '../../utils/errors' );
-const bcrypt = require( 'bcrypt' );
+import {User} from '../../models';
+
+import {ForbiddenError} from '../../utils/errors';
+
+import bcrypt from 'bcrypt';
 
 module.exports = async (req, res, next) => {
   try {

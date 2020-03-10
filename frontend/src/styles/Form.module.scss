@@ -11,11 +11,15 @@
 .button{
   font-size: 16px;
   margin-top: 5px;
-  width: 380px;
   padding: 10px;
   background-color: rgba(40, 210, 208, 1);
   color: white;
   border: 0;
   border-radius: 5px;
   font-family: Work Sans,sans-serif;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
 }

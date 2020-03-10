@@ -15,7 +15,13 @@ const SignUpForm = (props) => {
 
   return (
       <Form>
-       <Input placeholder="firstName"/>
+        <input
+            type="email"
+            name="email"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
+        />
         {errors.email && touched.email && errors.email}
         <input
             type="password"
@@ -53,17 +59,17 @@ const SignUpForm = (props) => {
   );
 };
 
-export default withFormik({
-                            mapPropsToValues: () => ({
-                              firstName: '',
-                              lastName: '',
-                              email: '',
-                              password: '',
-                              confirmPassword: '',
-                            }),
-                            handleSubmit: (values, formikBag) => {
-                              console.log(values);
-                              console.log(formikBag);
+export default withFormik( {
+  mapPropsToValues: () => ({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  }),
+  handleSubmit: (values, formikBag) => {
+    console.log( values );
+    console.log( formikBag );
 
-                            },
-                          })(SignUpForm);
+  },
+} )( SignUpForm );

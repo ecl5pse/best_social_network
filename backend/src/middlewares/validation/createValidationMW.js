@@ -1,4 +1,4 @@
-const { ACTION } = require( './../../constants' );
+import {ACTION} from './../../constants';
 
 /**
  *

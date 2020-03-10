@@ -1,8 +1,8 @@
-const ApplicationError = require( './ApplicationError.js' );
-const BadRequestError = require( './BadRequestError.js' );
-const ResourceNotFoundError = require( './ResourceNotFoundError.js' );
-const ForbiddenError = require( './ForbiddenError.js' );
-const AuthorizationError = require( './AuthorizationError.js' );
+import ApplicationError from './ApplicationError.js';
+import BadRequestError from './BadRequestError.js';
+import ResourceNotFoundError from './ResourceNotFoundError.js';
+import ForbiddenError from './ForbiddenError.js';
+import AuthorizationError from './AuthorizationError.js';
 
 module.exports = {
   ApplicationError,

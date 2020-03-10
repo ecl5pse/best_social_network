@@ -1,5 +1,6 @@
-const jwt = require('jsonwebtoken');
-const util = require('util');
+import jwt from 'jsonwebtoken';
+import util from 'util';
+
 const sign = util.promisify(jwt.sign);
 
 

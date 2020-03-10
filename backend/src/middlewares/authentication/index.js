@@ -1,12 +1,10 @@
-const findUserByEmail = require('../authentication/findUserByEmail');
-const comparePassword = require('../authentication/comparePassword.js');
-const loginByEmail = require('../authentication/loginByEmail');
-
-
+import findUserByEmail from '../authentication/findUserByEmail';
+import comparePassword from '../authentication/comparePassword.js';
+import loginByEmail from '../authentication/loginByEmail';
 
 module.exports = {
-  comparePassword,
-  findUserByEmail,
-  loginByEmail,
+	comparePassword,
+	findUserByEmail,
+	loginByEmail,
 
 };
