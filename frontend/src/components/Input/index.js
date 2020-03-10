@@ -1,17 +1,19 @@
-import React from 'react';
+import React      from 'react';
 import classNames from 'classnames';
-import styles     from '../../styles/Input.module.scss'
+import styles     from './Input.module.scss';
 
-const Input = (props) => {
-  const {field, form, label, ...rest} = props;
+const Input = ({ field, form, meta, ...props }) => {
+
+  const inputClassName = classNames( styles.field, {
+    [styles.fieldInvalid]: (meta.touched && meta.error),
+    [styles.fieldValid]: (meta.touched && !meta.error),
+  } );
+
   return (
-      <label>
-        <div className={classNames(styles.container)}>
-          <input {...field} {...rest} className={classNames(styles.default, {})}
-                 type="text" placeholder='Email'/>
-          <input {...field} {...rest} className={classNames(styles.default, {})}
-                 type="password" placeholder='Password'/>
-        </div>
+      <label className={styles.container}>
+        <div>{props.label}</div>
+        <input {...field} className={inputClassName} {...props}/>
+        {meta.error && <div className={styles.errorTip}>{meta.error}</div>}
       </label>
   );
 };
