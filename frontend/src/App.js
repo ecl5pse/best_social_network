@@ -1,27 +1,22 @@
-import React from 'react';
+import React, {Suspense, lazy} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import SignInPage from './pages/SignInPage';
-import SignUpPage from './pages/SignUpPage';
-import HomePage from './pages/HomePage';
+
+const SignInPage = lazy(() => import ('./pages/SignInPage'));
+const SignUpPage = lazy(() => import('./pages/SignUpPage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+
+const fallbackElem = <div>Loading...</div>;
 
 function App() {
   return (
       <Router>
-        <Switch>
-
-          <Route exact path="/">
-            <HomePage/>
-          </Route>
-
-          <Route path={['/signup', '/sign_up']}>
-            <SignUpPage/>
-          </Route>
-
-          <Route path={['/signin', '/sign_in', '/login']}>
-            <SignInPage/>
-          </Route>
-
-        </Switch>
+        <Suspense fallback={fallbackElem}>
+          <Switch>
+            <Route exact path="/" component={HomePage}/>
+            <Route path={['/signup', '/sign_up'] } component={SignUpPage}/>
+            <Route path={['/signin', '/sign_in', '/login']} component={SignInPage}/>
+          </Switch>
+        </Suspense>
       </Router>
   );
 }
