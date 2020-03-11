@@ -1,5 +1,5 @@
 import createValidationMW from './createValidationMW.js';
 
-module.exports = {
+export default {
   createValidationMW,
 };

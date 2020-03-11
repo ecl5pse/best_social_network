@@ -1,9 +1,9 @@
 'use strict';
-import {NAME_PATTERN, SALT_ROUND} from '../constants';
+import { NAME_PATTERN, SALT_ROUND } from '../constants';
 
 import bcrypt from 'bcrypt';
 
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const User = sequelize.define( 'User', {
     firstName: {
       type: DataTypes.STRING,
@@ -41,18 +41,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     }
   }, {} );
-
   User.associate = function (models) {
-    User.hasMany(models.Task, {
+    User.hasMany( models.Task, {
       foreignKey: 'userId'
-    });
-
-    User.associate = function(models) {
-      User.hasMany(models.RefreshToken, {
-        foreignKey: 'userId'
-      });
-    };
-
-    return User;
-  }
-};
+    } );
+    User.hasMany( models.RefreshToken, {
+      foreignKey: 'userId'
+    } );
+  };
+  return User;
+}

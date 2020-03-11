@@ -1,6 +1,2 @@
-import checkAuthorization from './checkAuthorization.js';
 
-module.exports = {
-
-  checkAuthorization,
-};
+export { default as checkAuthorization } from './checkAuthorization.js';

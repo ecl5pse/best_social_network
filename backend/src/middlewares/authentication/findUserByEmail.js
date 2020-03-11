@@ -1,21 +1,21 @@
-import {User} from '../../models';
+import { User } from '../../models';
 
-import {ResourceNotFoundError} from '../../utils/errors';
+import { ResourceNotFoundError } from '../../utils/errors';
 
-module.exports = async (req, res, next) => {
+export default async (req, res, next) => {
   try {
 
-    req.user = await User.findOne( {
-                                     where: {
-                                       email: req.body.email,
-                                     }
-                                   } );
+    req.user = await User.findOne({
+      where: {
+        email: req.body.email,
+      }
+    });
     if (req.user) {
       return next();
     }
-    next( new ResourceNotFoundError( User.name ) );
+    next(new ResourceNotFoundError(User.name));
 
   } catch (e) {
-    next( e );
+    next(e);
   }
-};
+}

@@ -1,7 +1,7 @@
 'use strict';
 
-import fs from 'fs';
-import path from 'path';
+import fs        from 'fs';
+import path      from 'path';
 import Sequelize from 'sequelize';
 
 const basename = path.basename(__filename);
@@ -17,14 +17,14 @@ if (config.use_env_variable) {
 }
 
 fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
-    db[model.name] = model;
-  });
+.readdirSync(__dirname)
+.filter(file => {
+  return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+})
+.forEach(file => {
+  const model = sequelize['import'](path.join(__dirname, file));
+  db[model.name] = model;
+});
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
@@ -35,4 +35,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+export default db;

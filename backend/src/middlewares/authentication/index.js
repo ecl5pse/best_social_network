@@ -1,10 +1,4 @@
-import findUserByEmail from '../authentication/findUserByEmail';
-import comparePassword from '../authentication/comparePassword.js';
-import loginByEmail from '../authentication/loginByEmail';
-
-module.exports = {
-	comparePassword,
-	findUserByEmail,
-	loginByEmail,
-
-};
+export { default as findUserByEmail } from './findUserByEmail.js';
+export { default as comparePassword } from './comparePassword.js';
+export { default as loginByEmail }    from './loginByEmail.js';
+export { default as signTokenPair }   from './signTokenPain.js';

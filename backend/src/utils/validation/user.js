@@ -1,14 +1,14 @@
-import Joi from '@hapi/joi';
-import {NAME_PATTERN, PASSWORD_PATTERN} from '../../constants';
+import Joi                                from '@hapi/joi';
+import { NAME_PATTERN, PASSWORD_PATTERN } from '../../constants';
 
 const nameSchema = Joi.string()
-	.pattern( NAME_PATTERN );
+.pattern( NAME_PATTERN );
 const emailSchema = Joi.string()
-	.email();
+.email();
 const passwordSchema = Joi.string()
-	.pattern( PASSWORD_PATTERN );
+.pattern( PASSWORD_PATTERN );
 
-module.exports = Joi.object( {
+export default Joi.object( {
 	firstName: nameSchema.label( 'First name' ).when( '$isCreateMode', {
 		then: nameSchema.required(),
 	} ),

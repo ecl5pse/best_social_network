@@ -4,7 +4,7 @@ import {ForbiddenError} from '../../utils/errors';
 
 import bcrypt from 'bcrypt';
 
-module.exports = async (req, res, next) => {
+export default async (req, res, next) => {
   try {
     /*
      * {

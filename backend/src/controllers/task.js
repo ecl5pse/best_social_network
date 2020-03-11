@@ -1,5 +1,4 @@
-import {Task} from './../models';
-
+import { Task }   from './../models';
 import Controller from './../utils/controller';
 
 class TaskController {
@@ -11,9 +10,9 @@ class TaskController {
   createTask = async (req, res, next) => {
     try {
       res.send( await this._controller.create( {
-                                                 ...req.body,
-                                                 userId: req.authorizationData.id
-                                               } ) );
+        ...req.body,
+        userId: req.authorizationData.id
+      } ) );
     } catch (e) {
       next( e );
     }
@@ -22,8 +21,8 @@ class TaskController {
   deleteTaskById = async (req, res, next) => {
     try {
       res.send( {
-                  isDeleted: (await this._controller.delete( req.params.id )) === '1'
-                } );
+        isDeleted: (await this._controller.delete( req.params.id )) === '1'
+      } );
     } catch (e) {
       next( e );
     }
@@ -49,12 +48,12 @@ class TaskController {
   getUserTasks = async (req, res, next) => {
     try {
       const userTasks = await Task.findAll( {
-                                              where: {
-                                                userId: req.authorizationData.id,
-                                              },
-                                              limit: 10,
-                                              order: [['createdAt', 'DESC']]
-                                            } );
+        where: {
+          userId: req.authorizationData.id,
+        },
+        limit: 10,
+        order: [['createdAt', 'DESC']]
+      } );
 
       res.send( userTasks );
     } catch (e) {
@@ -63,4 +62,4 @@ class TaskController {
   };
 }
 
-module.exports = new TaskController();
+export default new TaskController();

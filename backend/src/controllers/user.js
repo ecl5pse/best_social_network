@@ -1,4 +1,4 @@
-import {User} from './../models';
+import { User } from './../models';
 
 import Controller from './../utils/controller';
 
@@ -52,4 +52,4 @@ class UserController {
 
 }
 
-module.exports = new UserController();
+export default new UserController();

@@ -1,5 +1,5 @@
 import express from 'express';
-import {UserController} from '../controllers';
+import UserController  from '../controllers/user.js';
 
 const userRouter = express.Router();
 
@@ -10,4 +10,5 @@ userRouter.route( '/user(/:id)?' )
 	.patch( UserController.updateUserById )
 	.delete( UserController.deleteUserById );
 
-module.exports = userRouter;
+
+export default userRouter

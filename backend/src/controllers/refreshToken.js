@@ -1,6 +1,7 @@
-import {RefreshToken} from './../models';
+import { RefreshToken } from './../models';
 
-import Controller from './../utils/controller';
+import Controller          from './../utils/controller';
+import { BadRequestError } from '../utils/errors';
 
 class RefreshTokenController {
 
@@ -11,7 +12,7 @@ class RefreshTokenController {
   createRefreshToken = async (req, res, next) => {
     try {
       const refreshToken = await this._controller.create( {
-        refreshToken: req.tokenPair.refreshToken,
+        refreshToken: req.tokenPair.value,
         userId: req.user.id,
       } );
 
@@ -29,4 +30,4 @@ class RefreshTokenController {
 
 }
 
-module.exports = new RefreshTokenController();
+export default new RefreshTokenController();

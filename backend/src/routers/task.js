@@ -1,21 +1,16 @@
-import express from 'express';
-import {TaskController} from '../controllers';
-import {checkAuthorization} from '../middlewares/authorization';
+import express              from 'express';
+import TaskController       from '../controllers/task.js';
 
 const taskRouter = express.Router();
 
 
-
-taskRouter.use( checkAuthorization );
-
-
 taskRouter.route( '/tasks' )
-	.get( TaskController.getUserTasks );
+.get( TaskController.getUserTasks );
 
 taskRouter.route( '/task(/:id)?' )
-	.post( TaskController.createTask )
-	.get( TaskController.getTaskById )
-	.patch( TaskController.updateTaskById )
-	.delete( TaskController.deleteTaskById );
+.post( TaskController.createTask )
+.get( TaskController.getTaskById )
+.patch( TaskController.updateTaskById )
+.delete( TaskController.deleteTaskById );
 
-module.exports = taskRouter;
+export default taskRouter;
