@@ -1,21 +1,26 @@
 import React      from 'react';
-import classNames from 'classnames';
+import PropTypes  from 'prop-types';
 import styles     from './Input.module.scss';
+import classNames from 'classnames';
 
-const Input = ({ field, form, meta, ...props }) => {
+const Input = ({ field, meta, form, className, validStyles, invalidStyles, ...rest }) => {
+  const inputClassName = classNames( styles.input, {
+    [validStyles || styles.validValue]: meta.touched && !meta.error,
+    [invalidStyles || styles.invalidValue]: meta.touched && meta.error,
+  }, className );
+  return <input className={inputClassName} {...rest} {...field}/>;
+};
 
-  const inputClassName = classNames( styles.field, {
-    [styles.fieldInvalid]: (meta.touched && meta.error),
-    [styles.fieldValid]: (meta.touched && !meta.error),
-  } );
+Input.propTypes = {
+  type: PropTypes.string,
+  className: PropTypes.string,
+  invalidStyles: PropTypes.string,
+  validStyles: PropTypes.string,
+  placeholder: PropTypes.string,
+};
 
-  return (
-      <label className={styles.container}>
-        <div>{props.label}</div>
-        <input {...field} className={inputClassName} {...props} />
-        {meta.error && <div className={styles.errorTip}>{meta.error}</div>}
-      </label>
-  );
+Input.defaultProps = {
+  type: 'text'
 };
 
 export default Input;

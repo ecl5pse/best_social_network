@@ -1,18 +1,14 @@
 .container {
-   min-width: 320px;
+  min-width: 320px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .signUp{
   background-color:  rgba(62, 169, 245, 1);
   border: 1px solid white;
-  padding: 10px;
   border-radius: 5px;
-  position: relative;
-  top: -120px;
-  left: 200px;
 
 }
 
@@ -26,7 +22,4 @@ a{
   border: 1px solid white;
   padding: 10px;
   border-radius: 5px;
-  position: relative;
-  top: -120px;
-  left: -200px;
 }

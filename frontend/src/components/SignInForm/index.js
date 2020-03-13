@@ -1,66 +1,49 @@
-import React from 'react';
-import {Formik, Form, Field} from 'formik';
-import Input from '../Input';
-import * as Yup from 'yup';
-import styles from '../../styles/Form.module.scss';
+import React                       from 'react';
+import { Form, withFormik, Field } from 'formik';
+import * as Yup                    from 'yup';
+import Input                       from '../Input';
+import Label                       from '../Label';
+import StyledErrorMessage          from '../Error';
+import styles from './SignInForm.module.scss';
+import Button from '../Button ';
 
-const loginSchema = Yup.object().shape({
-  email: Yup.string().email().required(),
-  password: Yup.string().min(8),
-});
+const SignInForm = (props) => {
 
-const SignInForm = () => {
+  const { values, isSubmitting } = props;
 
-  const handleSubmit = (values, formikBag) => {
-    console.log(values);
+  const fieldRender = (name, type, placeholder) => {
+    return (
+        <Field name={name} value={values[name]}>
+          {
+            fieldProps => (
+                <Label className={styles.fieldWrapper}>
+                  <Input placeholder={placeholder} type={type} {...fieldProps}/>
+                  <StyledErrorMessage className={styles.errorWrapper} name={fieldProps.field.name}/>
+                </Label>
+            )
+          }
+        </Field>
+    );
   };
 
-  const initialValues = {
-    email: '',
-    password: '',
-  };
   return (
-      <Formik onSubmit={handleSubmit} validationSchema={loginSchema}
-              initialValues={initialValues}>
+      <Form className={styles.form}>
         {
-          ({
-             values,
-             errors,
-             touched,
-             handleChange,
-             handleBlur,
-             handleSubmit,
-             isSubmitting,
-           }) => (
-              <Form className={styles.form}>
-                <Field
-                    name="email" type="email">
-                  {
-                    (emailProps) => (
-                        <Input {...emailProps} label={'Email'}/>)
-                  }
-
-                </Field>
-                <Field name="password" type="password">
-
-                  {
-                    (passwordProps) => (
-                        <Input{...passwordProps} label={'Password'}
-                              type='password'/>)
-                  }
-
-                </Field>
-
-                {false}
-                <button type="submit" disabled={isSubmitting}
-                        className={styles.button}>
-                  Submit
-                </button>
-              </Form>
-          )
+          fieldRender( 'email', 'email', 'Email address' )
         }
-      </Formik>
+        {
+          fieldRender( 'password', 'password', 'Password' )
+        }
+        <Button className={styles.submitButton} disabled={isSubmitting} type='submit'>login</Button>
+      </Form>
   );
 };
 
-export default SignInForm;
+export default withFormik( {
+  handleSubmit: (values, formikBag) => { alert( JSON.stringify( values, null, 4 ) ); },
+  mapPropsToValues: () => ({ email: '', password: '' }),
+  validationSchema: Yup.object( {
+    email: Yup.string().email().required(),
+    password: Yup.string().required(),
+  } )
+} )( SignInForm );

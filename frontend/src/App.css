@@ -1,4 +1,8 @@
-loader,
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+.loader,
 .loader:before,
 .loader:after {
   background: #000000;
@@ -7,6 +11,7 @@ loader,
   width: 1em;
   height: 4em;
 }
+
 .loader {
   color: #000000;
   text-indent: -9999em;
@@ -19,20 +24,24 @@ loader,
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
+
 .loader:before,
 .loader:after {
   position: absolute;
   top: 0;
   content: '';
 }
+
 .loader:before {
   left: -1.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
+
 .loader:after {
   left: 1.5em;
 }
+
 @-webkit-keyframes load1 {
   0%,
   80%,
@@ -45,6 +54,7 @@ loader,
     height: 5em;
   }
 }
+
 @keyframes load1 {
   0%,
   80%,

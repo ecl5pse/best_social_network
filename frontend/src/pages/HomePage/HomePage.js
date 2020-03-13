@@ -1,15 +1,15 @@
-import React        from 'react';
+import React, {Fragment} from 'react';
 import {withRouter} from 'react-router';
-import Navigation   from '../components/Navigator';
-import styles       from '../styles/Page.module.scss'
+import Navigation   from '../../components/Navigator';
+import styles       from '../SignInPage/SignInPage.scss'
 import classNames   from 'classnames';
 
 const HomePage = (props) => {
   return (
-      <div className={classNames(styles.container)}>
+      <Fragment>
         <h1>Home Page</h1>
         <Navigation/>
-      </div>
+        </Fragment>
   );
 };
 

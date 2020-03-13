@@ -1,6 +1,6 @@
-import React          from 'react';
-import { withFormik, Form } from 'formik';
-import Input                from '../Input';
+import React from 'react';
+import {withFormik, Form} from 'formik';
+import Input from '../Input';
 
 const SignUpForm = (props) => {
   const {
