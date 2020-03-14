@@ -1,75 +1,68 @@
-import React from 'react';
-import {withFormik, Form} from 'formik';
-import Input from '../Input';
+import React                     from 'react';
+import {withFormik, Form, Field} from 'formik';
+import Input                     from '../Input';
+import *as Yup                   from 'yup';
+import Label                     from '../Label';
+import styles                    from './SignUpForm.module.scss';
+import StyledErrorMessage        from '../Error';
+import Button from '../Button ';
 
 const SignUpForm = (props) => {
-  const {
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    isSubmitting,
-  } = props;
 
+  const {values, isSubmitting} = props;
+  const fieldRender = (name, type, placeholder) => {
+    return (
+        <Field name={name} value={values[name]}>
+          {
+            fieldProps => (
+                <Label className={styles.fieldWrapper}>
+                  <Input placeholder={placeholder} type={type} {...fieldProps}/>
+                  <StyledErrorMessage className={styles.errorWrapper} name={fieldProps.field.name}/>
+                </Label>
+            )
+          }
+        </Field>
+    )
+  }
   return (
-      <Form>
-        <input
-            type="email"
-            name="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-        />
-        {errors.email && touched.email && errors.email}
-        <input
-            type="password"
-            name="password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.password}
-        />
-        <input
-            type="password"
-            name="confirmPassword"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.confirmPassword}
-        />
-        <input
-            type="text"
-            name="firstName"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.firstName}
-        />
-        <input
-            type="text"
-            name="lastName"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.lastName}
-        />
-        {errors.password && touched.password && errors.password}
-        <button type="submit" disabled={isSubmitting}>
-          Submit
-        </button>
+    <Form className={styles.form}>
+      {
+        fieldRender('firstName', 'text', 'First Name')
+      }
+      {
+        fieldRender('lastName', 'text', 'Last Name')
+      }
+      {
+        fieldRender('email','email','Email')
+      }
+      {
+        fieldRender('password', 'password', 'Password')
+      }
+      {
+        fieldRender('confirmPassword', 'password', 'Confirm Password')
+      }
+        <Button type="submit" disabled={isSubmitting} className={styles.submitButton}>Submit</Button>
       </Form>
   );
 };
 
-export default withFormik( {
-  mapPropsToValues: () => ({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  }),
-  handleSubmit: (values, formikBag) => {
-    console.log( values );
-    console.log( formikBag );
+export default withFormik({
+                            mapPropsToValues: () => ({
+                              firstName: '',
+                              lastName: '',
+                              email: '',
+                              password: '',
+                              confirmPassword: '',
+                            }),
+                            handleSubmit: (values, formikBag) => {
 
-  },
-} )( SignUpForm );
+                             alert(JSON.stringify(values,null,4))
+                            },
+                            validateSchema:Yup.object({
+                              firstName:Yup.string().required(),
+                              lastName: Yup.string().required(),
+                              email: Yup.string().email().required(),
+                              password: Yup.string().required(),
+                              confirmPassword: Yup.string().required()
+                            })
+                          })(SignUpForm);

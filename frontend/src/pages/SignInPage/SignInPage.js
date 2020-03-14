@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router';
-import './SignInPage.scss';
+import styles       from './SignInPage.module.scss';
 import SignInForm   from '../../components/SignInForm';
 import Label from '../../components/Label';
 import Navigation from '../../components/Navigator';
@@ -8,14 +8,11 @@ import Navigation from '../../components/Navigator';
 const SignInPage = (props) => {
 
   return (
-
-
-  <>
-    <Navigation/>
-    <Label/>
-    <SignInForm/>
+      <>
+        <Navigation/>
+        <Label children={'Login'} className={styles.login}/>
+        <SignInForm className={styles.form}/>
     </>
-
   );
 };
 

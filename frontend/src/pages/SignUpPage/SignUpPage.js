@@ -2,15 +2,16 @@ import React from 'react';
 import {withRouter} from 'react-router';
 import Navigation from '../../components/Navigator';
 import SignUpForm from '../../components/SignUpForm';
+import Label      from '../../components/Label';
 
 const SignUpPage = (props) => {
 
   return (
-      <div>
-        <h1>Sign Up Page</h1>
+      <>
         <Navigation/>
+        <Label/>
         <SignUpForm/>
-      </div>
+      </>
   );
 };
 
